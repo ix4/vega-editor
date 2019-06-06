@@ -1,10 +1,12 @@
 import * as vl from 'vega-lite';
 import {
   Action,
+  AUTHENTICATE,
   EXPORT_VEGA,
   FORMAT_SPEC,
   LOG_ERROR,
   PARSE_SPEC,
+  RECEIVE_CURRENT_USER,
   SET_BASEURL,
   SET_COMPILED_VEGA_PANE_SIZE,
   SET_CONFIG,
@@ -291,6 +293,16 @@ export default (state: State = DEFAULT_STATE, action: Action): State => {
       return {
         ...state,
         sidePaneItem: action.sidePaneItem,
+      };
+    case AUTHENTICATE:
+      return {
+        ...state,
+        isAuthenticated: action.isAuthenticated,
+      };
+    case RECEIVE_CURRENT_USER:
+      return {
+        ...state,
+        user: action.user,
       };
     default:
       return state;
