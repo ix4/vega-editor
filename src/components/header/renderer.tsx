@@ -1,19 +1,7 @@
 import stringify from 'json-stringify-pretty-compact';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  Code,
-  ExternalLink,
-  FileText,
-  GitHub,
-  Grid,
-  HelpCircle,
-  MoreVertical,
-  Play,
-  Share2,
-  Trash2,
-  X,
-} from 'react-feather';
+import { Code, ExternalLink, FileText, GitHub, Grid, HelpCircle, Play, Share2, Trash2, X } from 'react-feather';
 import { PortalWithState } from 'react-portal';
 import { withRouter } from 'react-router-dom';
 import Select from 'react-select';
@@ -60,7 +48,7 @@ class Header extends React.PureComponent<Props, State> {
   }
 
   public componentDidMount() {
-    const tagName = ['IMG', 'svg', 'circle'];
+    const tagName = ['IMG'];
     window.addEventListener('click', e => {
       const key = 'tagName';
       if (tagName.includes(e.target[key])) {
@@ -88,9 +76,7 @@ class Header extends React.PureComponent<Props, State> {
       })
       .then(json => {
         this.props.isLoggedIn(json.isAuthenticated);
-        if (json.profileUrl !== undefined) {
-          this.props.receiveCurrentUser(json.profileUrl);
-        }
+        this.props.receiveCurrentUser(json.profilePicUrl);
       })
       .catch(err => {
         // console.error(err);
@@ -230,8 +216,7 @@ class Header extends React.PureComponent<Props, State> {
     const auth = this.props.isAuthenticated ? (
       <form action={`${url}auth/github/logout`} method="get">
         <div className="profile-container">
-          <img className="profile-img" src={this.props.profileUrl} />
-          <MoreVertical />
+          <img className="profile-img" src={this.props.profilePicUrl} />
           {this.state.open && (
             <div className="profile-options">
               <input className="sign-out" type="submit" value="Logout" onClick={e => e.stopPropagation()} />
@@ -364,7 +349,15 @@ class Header extends React.PureComponent<Props, State> {
               </span>,
               portal(
                 <div className="modal-background" onClick={closePortal}>
-                  <div className="modal modal-top" onClick={e => e.stopPropagation()}>
+                  <div
+                    className="modal modal-top"
+                    onClick={e => {
+                      e.stopPropagation();
+                      this.setState({
+                        open: false,
+                      });
+                    }}
+                  >
                     <div className="modal-header">
                       <button className="close-button" onClick={closePortal}>
                         <X />
@@ -385,7 +378,15 @@ class Header extends React.PureComponent<Props, State> {
               </span>,
               portal(
                 <div className="modal-background" onClick={closePortal}>
-                  <div className="modal modal-top" onClick={e => e.stopPropagation()}>
+                  <div
+                    className="modal modal-top"
+                    onClick={e => {
+                      e.stopPropagation();
+                      this.setState({
+                        open: false,
+                      });
+                    }}
+                  >
                     <div className="modal-header">
                       <button className="close-button" onClick={closePortal}>
                         <X />
@@ -411,7 +412,15 @@ class Header extends React.PureComponent<Props, State> {
                 </span>,
                 portal(
                   <div className="modal-background" onClick={closePortal}>
-                    <div className="modal modal-top" onClick={e => e.stopPropagation()}>
+                    <div
+                      className="modal modal-top"
+                      onClick={e => {
+                        e.stopPropagation();
+                        this.setState({
+                          open: false,
+                        });
+                      }}
+                    >
                       <div className="modal-header">
                         <button className="close-button" onClick={closePortal}>
                           <X />
@@ -451,7 +460,15 @@ class Header extends React.PureComponent<Props, State> {
               </span>,
               portal(
                 <div className="modal-background" onClick={closePortal}>
-                  <div className="modal" onClick={e => e.stopPropagation()}>
+                  <div
+                    className="modal"
+                    onClick={e => {
+                      e.stopPropagation();
+                      this.setState({
+                        open: false,
+                      });
+                    }}
+                  >
                     <div className="modal-header">
                       <div className="button-groups">
                         <button
@@ -496,7 +513,15 @@ class Header extends React.PureComponent<Props, State> {
               </span>,
               portal(
                 <div className="modal-background" onClick={closePortal}>
-                  <div className="modal modal-top" onClick={e => e.stopPropagation()}>
+                  <div
+                    className="modal modal-top"
+                    onClick={e => {
+                      e.stopPropagation();
+                      this.setState({
+                        open: false,
+                      });
+                    }}
+                  >
                     <div className="modal-header">
                       <button className="close-button" onClick={closePortal}>
                         <X />
