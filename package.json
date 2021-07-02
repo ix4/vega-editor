@@ -22,7 +22,7 @@
     "vega-lite-dev-config": "^0.17.3",
     "webpack": "^5.41.1",
     "webpack-bundle-analyzer": "^4.4.2",
-    "webpack-cli": "^4.7.0",
+    "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
@@ -30,7 +30,7 @@
     "@types/react": "^17.0.13",
     "@types/react-redux": "^7.1.16",
     "@types/semver": "^7.3.6",
-    "ajv": "^8.5.0",
+    "ajv": "^8.6.0",
     "ajv-formats": "^2.1.0",
     "d3-array": "^2.12.1",
     "d3-geo-projection": "^3.0.0",
@@ -64,7 +64,7 @@
     "vega-lite": "5.1.0",
     "vega-schema-url-parser": "^2.2.0",
     "vega-themes": "^2.10.0",
-    "vega-tooltip": "^0.25.1"
+    "vega-tooltip": "^0.26.0"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
